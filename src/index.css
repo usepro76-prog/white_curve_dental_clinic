@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  /* The WHITE Curve Exact Logo Colors */
+  --color-brand-navy: #102A54;
+  --color-brand-sky: #008ED6;
+  --color-brand-soft: #F0F9FF;
+  --color-brand-dark: #07152B;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #FAFAFA;
+}
+
+/* Additional layout overrides */
+body {
+  font-family: var(--font-sans);
+  color: #1F2937;
+  overflow-x: hidden;
+}
+
+/* Custom Before/After Range Slider styles to override default browser inputs */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #008ED6;
+  border: 4px solid #FFFFFF;
+  box-shadow: 0 4px 12px rgba(16, 42, 84, 0.25);
+  cursor: ew-resize;
+  transition: transform 0.1s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #008ED6;
+  border: 4px solid #FFFFFF;
+  box-shadow: 0 4px 12px rgba(16, 42, 84, 0.25);
+  cursor: ew-resize;
+  transition: transform 0.1s ease;
+}
+
+input[type="range"]::-moz-range-thumb:hover {
+  transform: scale(1.1);
+}
