@@ -115,8 +115,8 @@ export default function About() {
               className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] font-extrabold tracking-tight leading-[1.1] mb-6 animate-fade-in"
             >
               Unveil excellence. <br />
-              Discover the Celestia <br />
-              Smiles difference.
+              Discover the WHITE <br />
+              Curve difference.
             </motion.h2>
 
             <motion.p 
@@ -126,7 +126,7 @@ export default function About() {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="text-blue-100/90 text-sm sm:text-base leading-relaxed max-w-xl font-medium"
             >
-              At Celestia Smiles, we believe that your smile deserves more than just care – it deserves celebration. Our board-certified experts offer a spa-like, comforting experience paired with cutting-edge dental and orthodontic treatments.
+              At The WHITE Curve, we believe that your smile deserves more than just care – it deserves celebration. Our board-certified experts offer a spa-like, comforting experience paired with cutting-edge dental and orthodontic treatments.
             </motion.p>
           </div>
 

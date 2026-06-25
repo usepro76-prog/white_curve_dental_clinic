@@ -6,6 +6,7 @@ import Treatments from './components/Treatments';
 import BeforeAfter from './components/BeforeAfter';
 import Specialists from './components/Specialists';
 import Reviews from './components/Reviews';
+import FAQ from './components/FAQ';
 import Footer from './components/Footer';
 import BookingModal from './components/BookingModal';
 import { Treatment, Dentist, Testimonial, SmileTransformation } from './types';
@@ -213,6 +214,9 @@ export default function App() {
       {/* Patient Stories Slider */}
       <Reviews testimonials={testimonials} />
 
+      {/* Frequently Asked Questions Section */}
+      <FAQ />
+
       {/* Footer Directory & Hours */}
       <Footer onOpenBooking={() => handleOpenBooking()} />
 
@@ -224,6 +228,29 @@ export default function App() {
         dentists={dentists}
         initialTreatmentId={preSelectedTreatmentId}
       />
+
+      {/* Floating WhatsApp Action Button */}
+      <a
+        href="https://wa.me/919172208080"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 z-50 bg-[#25D366] hover:bg-[#20ba59] text-white p-3.5 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 group"
+        id="floating-whatsapp-btn"
+        title="Chat with us on WhatsApp"
+      >
+        <svg
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          className="w-6.5 h-6.5"
+        >
+          <path d="M12.004 0C5.38 0 0 5.38 0 12c0 2.112.551 4.165 1.597 5.973L.053 24l6.192-1.624c1.724.94 3.666 1.436 5.751 1.438 6.621 0 12.001-5.38 12.004-12 .002-3.202-1.242-6.213-3.504-8.477C18.232 1.247 15.215.003 12.004 0zm5.952 16.945c-.244.686-1.214 1.258-1.683 1.323-.469.066-.935.127-3.003-.706-2.502-1.008-4.086-3.528-4.21-3.693-.125-.165-1.021-1.356-1.021-2.585 0-1.229.645-1.834.872-2.081.226-.247.495-.309.66-.309.165 0 .33.001.474.007.152.006.356-.057.556.425.206.495.701 1.711.763 1.835.062.124.103.268.021.433-.083.165-.124.268-.247.412-.124.144-.261.32-.371.43-.124.124-.253.259-.11.505.144.247.64 1.053 1.371 1.703.942.84 1.734 1.103 1.981 1.226.248.124.392.103.536-.062.144-.165.62-.722.784-.969.165-.247.33-.206.557-.124.227.082 1.443.68 1.69.804.248.124.413.186.475.289.062.103.062.597-.182 1.283z" />
+        </svg>
+        
+        {/* Premium Tooltip Label */}
+        <span className="absolute right-16 bg-brand-navy text-white text-[10px] font-black uppercase tracking-wider px-3 py-1.5 rounded-lg opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap shadow-md border border-white/10">
+          Chat on WhatsApp
+        </span>
+      </a>
     </div>
   );
 }

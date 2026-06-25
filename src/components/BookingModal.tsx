@@ -551,7 +551,7 @@ export default function BookingModal({
                                 name="phone"
                                 value={formData.phone}
                                 onChange={handleInputChange}
-                                placeholder="+1 (555) 000-0000"
+                                placeholder="+91 98765 43210"
                                 required
                                 className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-sky/20 focus:border-brand-sky text-gray-800 transition-all"
                               />

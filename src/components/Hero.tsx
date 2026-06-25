@@ -20,7 +20,7 @@ export default function Hero({ onOpenBooking, heroImg }: HeroProps) {
         className="absolute inset-0 w-full h-full object-cover pointer-events-none z-0"
         referrerPolicy="no-referrer"
       />
-      {/* Massive Background watermark - signature element of the Celestia UI reference */}
+      {/* Massive Background watermark - signature element of the WHITE Curve UI reference */}
       <div className="absolute inset-x-0 bottom-12 select-none pointer-events-none text-center hidden md:block">
         <h1 className="text-[12vw] font-black leading-none text-gray-50/80 tracking-tighter uppercase whitespace-nowrap">
           The WHITE Curve — Soft. Defined.
