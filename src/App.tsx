@@ -15,6 +15,7 @@ import { Treatment, Dentist, Testimonial, SmileTransformation } from './types';
 import heroImg from './assets/images/white-curev-hero-desktop-img.jpeg';
 import smileBeforeImg from './assets/images/smile_before_1782239603723.jpg';
 import smileAfterImg from './assets/images/smile_after_1782239624632.jpg';
+import drArasImg from './assets/images/Dr._Sanket_Aras_white_curve.png';
 
 export default function App() {
   const [isBookingOpen, setIsBookingOpen] = useState(false);
@@ -111,7 +112,7 @@ export default function App() {
       bio: 'Endodontist & Aesthetic Dentist, Assistant Professor at D.Y. Patil Dental College & Hospital. Dedicated to precision oral care and advanced smile design.',
       rating: 4.9,
       reviewsCount: 840,
-      avatarUrl: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=600&auto=format&fit=crop',
+      avatarUrl: drArasImg,
     },
   ];
 

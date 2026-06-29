@@ -11,6 +11,7 @@ import {
   Sparkles,
   Calendar
 } from 'lucide-react';
+import drArasImg from '../assets/images/Dr._Sanket_Aras_white_curve.png';
 
 interface SpecialistsProps {
   dentists: Dentist[];
@@ -27,7 +28,7 @@ export default function Specialists({ dentists, onOpenBooking }: SpecialistsProp
     bio: 'Endodontist & Aesthetic Dentist, Assistant Professor at D.Y. Patil Dental College & Hospital. Dedicated to precision oral care and advanced smile design.',
     rating: 4.9,
     reviewsCount: 840,
-    avatarUrl: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=600&auto=format&fit=crop'
+    avatarUrl: drArasImg
   };
 
   return (
