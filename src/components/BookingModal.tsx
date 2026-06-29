@@ -42,8 +42,8 @@ export default function BookingModal({
     for (let i = 1; i <= 14; i++) {
       const d = new Date();
       d.setDate(d.getDate() + i);
-      // Skip Sundays for clinic bookings
-      if (d.getDay() !== 0) {
+      // Skip Tuesdays (Clinic is Closed)
+      if (d.getDay() !== 2) {
         days.push({
           fullDate: d.toISOString().split('T')[0],
           dayName: weekdays[d.getDay()],
@@ -57,10 +57,25 @@ export default function BookingModal({
 
   const availableDays = getNextDays();
 
-  const timeSlots = [
-    '09:00 AM', '10:15 AM', '11:30 AM', 
-    '01:30 PM', '02:45 PM', '04:00 PM', '05:15 PM'
-  ];
+  const getTimeSlotsForDate = (dateStr: string) => {
+    if (!dateStr) return [];
+    // Safely parse local date parts (YYYY-MM-DD)
+    const parts = dateStr.split('-');
+    const d = new Date(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2]));
+    const day = d.getDay();
+    
+    if (day === 0) { // Sunday: 10:00 AM – 02:00 PM, 06:00 PM – 08:00 PM
+      return [
+        '10:00 AM', '11:15 AM', '12:30 PM', '01:15 PM',
+        '06:00 PM', '06:45 PM', '07:30 PM'
+      ];
+    }
+    
+    // Monday, Wednesday, Thursday, Friday, Saturday: 05:00 PM – 09:30 PM
+    return [
+      '05:00 PM', '05:45 PM', '06:30 PM', '07:15 PM', '08:00 PM', '08:45 PM'
+    ];
+  };
 
   const handleSelectTreatment = (id: string) => {
     setFormData(prev => ({ ...prev, treatmentId: id }));
@@ -71,7 +86,15 @@ export default function BookingModal({
   };
 
   const handleSelectDate = (date: string) => {
-    setFormData(prev => ({ ...prev, date }));
+    setFormData(prev => {
+      const slots = getTimeSlotsForDate(date);
+      const isTimeSlotValid = slots.includes(prev.timeSlot);
+      return {
+        ...prev,
+        date,
+        timeSlot: isTimeSlotValid ? prev.timeSlot : ''
+      };
+    });
   };
 
   const handleSelectTime = (time: string) => {
@@ -97,6 +120,51 @@ export default function BookingModal({
         setErrorMsg("Please complete all required fields.");
         return;
       }
+      
+      // Structure the WhatsApp text message
+      const treatmentName = selectedTreatment ? selectedTreatment.name : 'Not Specified';
+      const dentistName = selectedDentist ? selectedDentist.name : 'Not Specified';
+      const formattedNotes = formData.notes.trim() ? formData.notes : 'None';
+
+      const formatDateFriendly = (dateStr: string) => {
+        if (!dateStr) return '';
+        try {
+          const parts = dateStr.split('-');
+          const dateObj = new Date(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2]));
+          return dateObj.toLocaleDateString('en-US', { 
+            weekday: 'long', 
+            day: 'numeric', 
+            month: 'short', 
+            year: 'numeric' 
+          });
+        } catch {
+          return dateStr;
+        }
+      };
+
+      const friendlyDate = formatDateFriendly(formData.date);
+      
+      const whatsappMessage = 
+        `✨ *THE WHITE CURVE* ✨\n` +
+        `_Appointment Request Portal_\n\n` +
+        `👤 *PATIENT DETAILS*\n` +
+        `• *Name:* ${formData.name}\n` +
+        `• *Phone:* ${formData.phone}\n` +
+        `• *Email:* ${formData.email}\n\n` +
+        `📅 *APPOINTMENT DETAILS*\n` +
+        `• *Treatment:* ${treatmentName}\n` +
+        `• *Specialist:* ${dentistName}\n` +
+        `• *Date:* ${friendlyDate}\n` +
+        `• *Time Slot:* ${formData.timeSlot}\n\n` +
+        `📝 *ADDITIONAL NOTES*\n` +
+        `"${formattedNotes}"\n\n` +
+        `✉️ _This inquiry was compiled automatically from the web booking portal._`;
+        
+      const whatsappUrl = `https://wa.me/919303271355?text=${encodeURIComponent(whatsappMessage)}`;
+      
+      // Open structured WhatsApp link in a new tab
+      window.open(whatsappUrl, '_blank');
+
       setBookingConfirmed(true);
     }
   };
@@ -471,7 +539,7 @@ export default function BookingModal({
                           </div>
                         ) : (
                           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2" id="booking-timeslots-grid">
-                            {timeSlots.map((time) => {
+                            {getTimeSlotsForDate(formData.date).map((time) => {
                               const isSelected = formData.timeSlot === time;
                               return (
                                 <button

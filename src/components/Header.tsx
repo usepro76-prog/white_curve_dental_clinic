@@ -58,11 +58,11 @@ export default function Header({ onOpenBooking }: HeaderProps) {
         {/* CTA Actions */}
         <div className="hidden lg:flex items-center gap-4" id="desktop-ctas">
           <a
-            href="tel:+919172208080"
+            href="tel:+919303271355"
             className="flex items-center gap-1.5 text-xs font-bold text-brand-navy hover:text-brand-sky transition-colors px-3 py-2"
           >
             <PhoneCall className="w-3.5 h-3.5 text-brand-sky" />
-            <span>+91 91722 08080</span>
+            <span>+91 93032 71355</span>
           </a>
           <button
             onClick={onOpenBooking}
@@ -103,11 +103,11 @@ export default function Header({ onOpenBooking }: HeaderProps) {
 
           <div className="mt-auto border-t border-gray-100 pt-6 space-y-4">
             <a
-              href="tel:+919172208080"
+              href="tel:+919303271355"
               className="flex items-center justify-center gap-2 py-3 bg-gray-50 text-brand-navy font-bold rounded-2xl text-sm"
             >
               <PhoneCall className="w-4 h-4 text-brand-sky" />
-              <span>+91 91722 08080</span>
+              <span>+91 93032 71355</span>
             </a>
             <button
               onClick={() => {

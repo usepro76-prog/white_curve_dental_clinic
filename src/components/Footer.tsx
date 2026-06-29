@@ -20,9 +20,10 @@ export default function Footer({ onOpenBooking }: FooterProps) {
   const currentYear = new Date().getFullYear();
 
   const businessHours = [
-    { days: 'Monday – Friday', hours: '08:00 AM – 07:00 PM' },
-    { days: 'Saturday', hours: '09:00 AM – 04:00 PM' },
-    { days: 'Sunday', hours: 'Closed (Emergency Only)' },
+    { days: 'Monday', hours: '05:00 PM – 09:30 PM' },
+    { days: 'Tuesday', hours: 'Closed' },
+    { days: 'Wednesday – Saturday', hours: '05:00 PM – 09:30 PM' },
+    { days: 'Sunday', hours: '10:00 AM – 02:00 PM, 06:00 PM – 08:00 PM' },
   ];
 
   return (
@@ -56,7 +57,7 @@ export default function Footer({ onOpenBooking }: FooterProps) {
                 <Instagram className="w-4.5 h-4.5" />
               </a>
               <a
-                href="https://wa.me/919172208080"
+                href="https://wa.me/919303271355"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2.5 bg-[#25D366] hover:bg-[#20ba59] text-white rounded-xl transition-all shadow-md flex items-center justify-center active:scale-95 shrink-0"
@@ -76,9 +77,11 @@ export default function Footer({ onOpenBooking }: FooterProps) {
               {businessHours.map((bh, idx) => (
                 <div key={idx} className="flex justify-between items-center text-xs py-1 border-b border-white/5">
                   <span className="text-gray-300 font-medium">{bh.days}</span>
-                  <span className="font-semibold text-white flex items-center gap-1">
-                    <Clock className="w-3.5 h-3.5 text-brand-sky shrink-0" />
-                    {bh.hours}
+                  <span className="font-semibold text-white flex flex-col items-start sm:items-end gap-0.5">
+                    <span className="flex items-center gap-1">
+                      <Clock className="w-3.5 h-3.5 text-brand-sky shrink-0" />
+                      {bh.hours}
+                    </span>
                   </span>
                 </div>
               ))}
@@ -92,13 +95,13 @@ export default function Footer({ onOpenBooking }: FooterProps) {
             </h4>
             <div className="space-y-4 text-xs" id="footer-contact">
               <a
-                href="tel:+919172208080"
+                href="tel:+919303271355"
                 className="flex items-start gap-3 hover:text-brand-sky transition-colors text-gray-300 group"
               >
                 <Phone className="w-4 h-4 text-brand-sky mt-0.5 shrink-0 group-hover:scale-110 transition-transform" />
                 <div>
                   <span className="font-bold block text-white">Call Reception</span>
-                  <span>+91 91722 08080</span>
+                  <span>+91 93032 71355</span>
                 </div>
               </a>
 
